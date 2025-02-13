@@ -16,9 +16,9 @@ router = APIRouter()
 def get_users(session: SESSION_DEP):
     return get_all_users(session)
 
-@router.post("/", response_model=UserResponse)
-def create_user( user: UserCreate, session: SESSION_DEP):
-    return create_a_user(session, user)
+# @router.post("/", response_model=UserResponse)
+# def create_user( user: UserCreate, session: SESSION_DEP):
+#     return create_a_user(session, user)
 
 @router.delete("/{used_id}")
 def delete_user(user_id: str, session: SESSION_DEP):

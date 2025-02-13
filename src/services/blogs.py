@@ -7,8 +7,8 @@ from src.schemas.blogs import BlogCreate
 def get_blogs_service(session: Session):
     return session.exec(select(Blog)).all()
 
-def create_blog_service(session: Session, blog_post: BlogCreate):
-    blog = Blog(**blog_post.dict())
+def create_blog_service(session: Session, blog_post: BlogCreate, user_id: uuid.UUID):
+    blog = Blog(**blog_post.dict(), author_id=user_id)
     session.add(blog)
     session.commit()
     session.refresh(blog)
